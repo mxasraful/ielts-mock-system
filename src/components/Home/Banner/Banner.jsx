@@ -20,12 +20,12 @@ export default function Banner() {
             }
           </p>
           <div>
-            <button className="btn btn-light text-danger fw-bold me-2">
+            <button className="btn btn-light text-danger fw-bold me-2 mb-2">
               {
                 heroData?.ctaPrimary || "Start Your Free Mock Test"
               }
             </button>
-            <button className="btn btn-outline-light">
+            <button className="btn btn-outline-light mb-2">
               {
                 heroData?.ctaSecondary || "Learn More"
               }
