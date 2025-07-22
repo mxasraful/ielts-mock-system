@@ -1,0 +1,80 @@
+/* Subscribe.css */
+
+/* Smooth card hover effect */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1.25rem 2.25rem rgba(0, 0, 0, 0.1);
+}
+
+/* Premium Plan Highlight */
+.card.border-warning {
+  background: linear-gradient(145deg, #fffbe6, #fff);
+}
+
+/* Premium crown icon style */
+.card .text-warning svg {
+  animation: crown-pulse 2s infinite;
+}
+
+@keyframes crown-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Plan Titles */
+.card-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Price text */
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Feature list */
+.card ul li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.card ul li svg {
+  margin-right: 8px;
+}
+
+/* Buttons */
+.card button {
+  font-weight: 500;
+  border-radius: 50px;
+}
+
+.card .btn-warning {
+  background-color: #ffc107;
+  border: none;
+}
+
+.card .btn-warning:hover {
+  background-color: #ffb300;
+  box-shadow: 0 0.5rem 1rem rgba(255, 193, 7, 0.3);
+}
+
+.card .btn-outline-secondary {
+  border-radius: 50px;
+}
+
+.card .btn-outline-secondary:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 0.5rem 1rem rgba(248, 249, 250, 0.3);
+}

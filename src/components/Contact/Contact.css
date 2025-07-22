@@ -1,0 +1,10 @@
+
+form .form-control:focus {
+  box-shadow: none;
+  border-color: #dc3545;
+}
+
+.btn-danger {
+  border-radius: 50px;
+  font-weight: 500;
+}

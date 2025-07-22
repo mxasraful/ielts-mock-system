@@ -1,0 +1,23 @@
+/* Testimonial.css */
+
+.testimonial-page {
+  min-height: 50vh;
+}
+
+.testimonial-card {
+  border-radius: 12px;
+  background-color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.1);
+}
+
+.quote-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  opacity: 0.1;
+}

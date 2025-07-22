@@ -1,0 +1,209 @@
+/* profile.css */
+
+.profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 25px;
+  border: 3px solid #d62828;
+}
+
+.profile-info h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.profile-info p {
+  color: #555;
+  margin: 4px 0;
+}
+
+.membership {
+  background: #d62828;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 13px;
+  border-radius: 5px;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+.edit-btn {
+  background: transparent;
+  color: #d62828;
+  border: 1px solid #d62828;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Stats */
+.profile-stats {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.stat h3 {
+  font-size: 22px;
+  color: #d62828;
+}
+
+.stat p {
+  font-size: 14px;
+  color: #444;
+}
+
+/* Chart */
+.progress-chart {
+  margin-bottom: 30px;
+}
+
+.chart-placeholder {
+  background: #f2f2f2;
+  height: 150px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+/* Badges */
+.badge-section {
+  margin-bottom: 30px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  background: #d62828;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 20px;
+}
+
+/* History Table */
+.history-section {
+  margin-bottom: 30px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.history-table th {
+  background: #f5f5f5;
+}
+
+/* Actions */
+.profile-actions {
+  text-align: center;
+}
+
+.profile-actions button {
+  background: #d62828;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout {
+  background: #555;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-out;
+  z-index: 1001;
+}
+
+.modal input {
+  width: 90%;
+  margin: 10px auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  margin: 0 10px;
+  background: #d62828;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-actions .cancel {
+  background: gray;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
