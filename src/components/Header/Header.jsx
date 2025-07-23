@@ -72,10 +72,10 @@ export default function Header() {
                 </div>
               ) : (
                 <>
-                  <Link to="/signin" className="btn btn-outline-danger me-2">
+                  <Link to="/signin" className="btn btn-outline-danger px-4 rounded-pill me-2">
                     Sign In
                   </Link>
-                  <Link to="/signup" className="btn btn-danger">
+                  <Link to="/signup" className="btn btn-danger px-4 rounded-pill">
                     Sign Up
                   </Link>
                 </>

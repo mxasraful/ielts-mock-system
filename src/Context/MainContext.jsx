@@ -50,6 +50,7 @@ const ContextProvider = ({ children }) => {
     email: "mxasraful@outlook.com",
     phone: "+1 (123) 456-7890",
     address: "123 IELTS Prep St, Test City, TC 12345",
+    ghLink: "https//github.com/mxasraful",
   });
 
   const loginUser = (userData) => {

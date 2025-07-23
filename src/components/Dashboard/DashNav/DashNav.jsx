@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import "./../Dashboard.css";
 import { MainContext } from "../../../Context/MainContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
 export default function () {
 
   const { user, headerData, logoutUser } = useContext(MainContext);
+
+  const pathname = useLocation().pathname;
+  
+  console.log("DashNav Rendered", pathname.substring(0, 10));
 
   return (
     <>
@@ -27,12 +31,12 @@ export default function () {
           <div className="collapse navbar-collapse" id="mainNavbar">
             <ul className="navbar-nav ms-auto me-3">
               <li className="nav-item">
-                <Link className="nav-link active" to="/user/dashboard">
+                <Link className={pathname.substring(0, 10) == "/user/dash" ? "nav-link active": "nav-link"} to="/user/dashboard">
                   Dashboard
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/user/tests">
+                <Link className={pathname.substring(0, 10) == "/user/test" ? "nav-link active": "nav-link"} to="/user/tests">
                   Tests
                 </Link>
               </li>

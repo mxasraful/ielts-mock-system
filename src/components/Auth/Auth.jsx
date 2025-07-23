@@ -49,7 +49,7 @@ const AuthPage = () => {
   }, [user]);
 
   const toggleForm = () => {
-    setIsSignUp((prev) => !prev);
+    nevigate(isSignUp ? "/signin" : "/signup");
   };
 
   const handleChange = (e) => {
@@ -194,13 +194,7 @@ const AuthPage = () => {
             Dashboard
           </a>
         </div>
-      ) : (
-        <div className="text-center text-muted">
-          <a href="/" className="btn btn-outline-info px-5">
-            Home
-          </a>
-        </div>
-      )}
+                  ) : ""}
     </div>
   );
 };

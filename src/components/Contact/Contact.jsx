@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Contact.css";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { MainContext } from "../../Context/MainContext";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
-
-  
-  const {contactInfo} = React.useContext(MainContext);
+  const { contactInfo } = useContext(MainContext);
 
   return (
     <div className="contact-page bg-light">
@@ -31,7 +30,25 @@ const Contact = () => {
               </p>
               <p className="mb-3">
                 <FaMapMarkerAlt className="me-2 text-danger" />
-                <strong>Address:</strong> {contactInfo?.address || "123 IELTS Prep St, Test City, TC 12345"}
+                {contactInfo.ghLink ? (
+                  <>
+                    <strong>Github:</strong>
+                    <Link
+                      to={contactInfo.ghLink}
+                      className="text-decoration-none text-danger"
+                    >
+                      {contactInfo.ghLink}
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <strong>Address:</strong> {contactInfo?.address || ""}
+                  </>
+                )}
+                <strong>Github:</strong>
+                {contactInfo?.ghLink(
+                  <Link to={contactInfo?.ghLink}>{contactInfo?.ghLink}</Link>
+                ) || contactInfo?.address}
               </p>
               <p className="small text-muted">
                 Our team typically replies within 24 hours.
@@ -45,17 +62,33 @@ const Contact = () => {
               <h5 className="mb-4 text-dark">Send Us a Message</h5>
               <form>
                 <div className="mb-3">
-                  <label htmlFor="name" className="form-label">Full Name</label>
-                  <input type="text" className="form-control" id="name" required />
+                  <label htmlFor="name" className="form-label">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="name"
+                    required
+                  />
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Email Address</label>
-                  <input type="email" className="form-control" id="email" required />
+                  <label htmlFor="email" className="form-label">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    required
+                  />
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="message" className="form-label">Message</label>
+                  <label htmlFor="message" className="form-label">
+                    Message
+                  </label>
                   <textarea
                     className="form-control"
                     id="message"
