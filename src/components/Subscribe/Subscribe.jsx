@@ -76,7 +76,7 @@ const Subscribe = () => {
     <>
       <div className="container py-5">
         <div className="text-center mb-5">
-          <h1 className="fw-bold text-danger">Choose Your Plan</h1>
+          <h2 className="h2 fw-bold text-danger">Choose Your Plan</h2>
           <p className="text-muted">Find the right plan for your IELTS preparation</p>
         </div>
 
@@ -94,7 +94,7 @@ const Subscribe = () => {
                   </div>
                   <h5 className="card-title fw-bold text-dark">{plan.name}</h5>
                   <p className="card-text text-muted">{plan.description}</p>
-                  <h2 className={`my-3 text-${plan.color}`}>{plan.price}</h2>
+                  <h2 className={`my-3 h2 text-${plan.color}`}>{plan.price}</h2>
                   <ul className="list-unstyled text-start px-3 small mb-4">
                     {plan.features.map((feature, i) => (
                       <li key={i}>

@@ -27,7 +27,7 @@ export default function Home () {
 
       <section id="features" className="py-5">
         <div className="container text-center">
-          <h2 className="fw-bold mb-5">Why Choose IELTSMOCKPREPPro?</h2>
+          <h2 className="fw-bold mb-5 h2">Why Choose IELTSMOCKPREPPro?</h2>
           <div className="row g-4">
             <div className="col-md-4">
               <div className="p-4 bg-light rounded shadow-sm h-100">
@@ -65,7 +65,7 @@ export default function Home () {
 
       <section className="cta bg-danger text-white text-center py-5">
         <div className="container">
-          <h2 className="fw-bold mb-3">Ready to Ace Your IELTS Exam?</h2>
+          <h2 className="fw-bold mb-3 h2">Ready to Ace Your IELTS Exam?</h2>
           <p className="mb-4">
             Join thousands of successful students worldwide. Start your journey
             today!

@@ -308,7 +308,7 @@ export default function IELTSMockTest() {
   return (
     <div className="container my-5">
       <header className="mb-4">
-        <h2 className="text-center fw-bold">IELTS MOCK PREP Pro</h2>
+        <h2 className="text-center fw-bold h2">IELTS MOCK PREP Pro</h2>
       </header>
 
       <div className="card p-4 mb-4">

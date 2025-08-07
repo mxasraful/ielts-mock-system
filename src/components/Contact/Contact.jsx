@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <div className="contact-page bg-light">
       <div className="container py-5">
-        <h2 className="text-center mb-4 text-danger fw-bold">Get in Touch</h2>
+        <h2 className="text-center mb-4 text-danger fw-bold h2">Get in Touch</h2>
         <p className="text-center text-muted mb-5">
           Have questions or need support? We're here to help.
         </p>
@@ -19,25 +19,25 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="col-md-5">
             <div className="bg-white shadow-sm p-4 rounded h-100">
-              <h5 className="mb-4 text-dark">Contact Information</h5>
-              <p className="mb-3">
-                <FaEnvelope className="me-2 text-danger" />
+              <h5 className="h5 mb-4 text-dark">Contact Information</h5>
+              <p className="mb-3 d-flex">
+                <FaEnvelope className="me-2 mt-1 text-danger" />
                 <strong>Email:</strong> {contactInfo?.email || ""}
               </p>
-              <p className="mb-3">
-                <FaPhoneAlt className="me-2 text-danger" />
+              <p className="mb-3 d-flex">
+                <FaPhoneAlt className="me-2 mt-1 text-danger" />
                 <strong>Phone:</strong> {contactInfo?.phone || ""}
               </p>
               <p className="mb-3">
-                <FaMapMarkerAlt className="me-2 text-danger" />
-                {contactInfo.ghLink ? (
+                {/* <FaMapMarkerAlt className="me-2 text-danger" />
+                {contactInfo?.ghLink ? (
                   <>
                     <strong>Github:</strong>
                     <Link
-                      to={contactInfo.ghLink}
+                      to={contactInfo?.ghLink}
                       className="text-decoration-none text-danger"
                     >
-                      {contactInfo.ghLink}
+                      {contactInfo?.ghLink}
                     </Link>
                   </>
                 ) : (
@@ -48,7 +48,7 @@ const Contact = () => {
                 <strong>Github:</strong>
                 {contactInfo?.ghLink(
                   <Link to={contactInfo?.ghLink}>{contactInfo?.ghLink}</Link>
-                ) || contactInfo?.address}
+                ) || contactInfo?.address} */}
               </p>
               <p className="small text-muted">
                 Our team typically replies within 24 hours.
@@ -59,7 +59,7 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="col-md-7">
             <div className="bg-white shadow-sm p-4 rounded">
-              <h5 className="mb-4 text-dark">Send Us a Message</h5>
+              <h5 className="h5 mb-4 text-dark">Send Us a Message</h5>
               <form>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">

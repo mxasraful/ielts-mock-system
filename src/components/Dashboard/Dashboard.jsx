@@ -1,157 +1,156 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
-  FaHeadphones,
-  FaBookOpen,
-  FaPenNib,
-  FaMicrophone,
-  FaCrown,
-  FaUserCircle,
-  FaClock,
-  FaChartBar,
-  FaBullhorn,
-  FaLightbulb,
-} from "react-icons/fa";
-import "./Dashboard.css";
-import { MainContext } from "../../Context/MainContext";
-import DashNav from "./DashNav/DashNav";
+  MdAssignment,
+  MdTrendingUp,
+  MdCalendarToday,
+  MdEmojiEvents,
+  MdBarChart,
+  MdPeople,
+  MdSettings,
+  MdMenu,
+  MdExpandMore,
+  MdPerson,
+  MdLogout,
+  MdNotifications,
+} from "react-icons/md";
+import OverviewPage from "./Components/Overview/Overview";
+import ProgressPage from "./Components/ProgressPage/ProgressPage";
+import SettingsPage from "./Components/SettingsPage/SettingsPage";
+import PracticeTestsPage from "./Components/PracticeTestsPage/PracticeTestsPage";
+import CommunityPage from "./Components/CommunityPage/CommunityPage";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const Dashboard = () => {
-  const navigate = useNavigate();
-  const isSubscribed = false; // Replace with actual subscription logic
-  const { user, logoutUser, headerData } = useContext(MainContext);
+export default function IELTSDashboard() {
+  const [selectedModule, setSelectedModule] = useState("overview");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const modules = [
-    { title: "Listening", icon: <FaHeadphones />, color: "primary", path: "/user/tests/listening" },
-    { title: "Reading", icon: <FaBookOpen />, color: "success", path: "/user/tests/reading" },
-    { title: "Writing", icon: <FaPenNib />, color: "warning", path: "/user/tests/writing" },
-    { title: "Speaking", icon: <FaMicrophone />, color: "danger", path: "/user/tests/speaking" },
-  ];
+  const pathnameUser = useLocation().pathname.substring(6, 1111);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    pathnameUser === "dashboard"
+      ? setSelectedModule("overview")
+      : pathnameUser === "tests"
+      ? setSelectedModule("tests")
+      : pathnameUser === "settings"
+      ? setSelectedModule("settings")
+      : pathnameUser === "progress"
+      ? setSelectedModule("progress")
+      : pathnameUser === "community"
+      ? setSelectedModule("community")
+      : setSelectedModule("overview");
+  }, [pathnameUser]);
+
+  // Redirect profile to settings
+  useEffect(() => {
+    if (pathnameUser) {
+      if (pathnameUser === "profile") {        
+        navigate("/user/settings")
+      }
+    }
+  }, [pathnameUser])
 
   return (
-    <div className="dashboard">
-      {user && user.email ? (
-        <>
-          {/* Dashboard Content */}
-          <div className="container my-5">
-            {/* Test Modules */}
-            <div className="row g-4 mb-5">
-              {modules.map((mod, index) => (
-                <div key={index} className="col-sm-6 col-lg-3">
-                  <div
-                    className="card border-0 shadow h-100 hover-card bg-light"
-                    onClick={() => navigate(mod.path)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <div className="card-body text-center">
-                      <div className={`icon-circle text-white bg-${mod.color} mb-3 mx-auto`}>
-                        {mod.icon}
-                      </div>
-                      <h5 className="card-title">{mod.title} Test</h5>
-                      <p className="card-text text-muted small">Click to start</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Subscription Card */}
-            <div className="card border-0 shadow p-4 mb-4">
-              <div className="row align-items-center">
-                <div className="col-md-8">
-                  <h5 className="fw-bold">Subscription Status</h5>
-                  <p className={isSubscribed ? "text-success" : "text-danger"}>
-                    {isSubscribed
-                      ? "✅ You are subscribed to the Premium plan."
-                      : "❌ You are using the Free plan."}
-                  </p>
-                </div>
-                {!isSubscribed && (
-                  <div className="col-md-4 text-md-end">
-                    <button
-                      className="btn btn-outline-danger d-flex align-items-center gap-2"
-                      onClick={() => navigate("/subscribe")}
-                    >
-                      <FaCrown />
-                      <span>Buy Subscription</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Progress and Schedule */}
-            <div className="row g-4 mb-4">
-              <div className="col-md-6">
-                <div className="card border-0 shadow p-3 h-100">
-                  <h5 className="fw-bold text-dark mb-3">
-                    <FaChartBar className="me-2 text-primary" />
-                    Your Progress
-                  </h5>
-                  <ul className="list-group list-group-flush small">
-                    <li className="list-group-item">✅ Listening: 3 tests completed</li>
-                    <li className="list-group-item">✅ Reading: 2 tests completed</li>
-                    <li className="list-group-item">✍️ Writing: 1 test submitted</li>
-                    <li className="list-group-item">🎤 Speaking: 1 test scheduled</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="col-md-6">
-                <div className="card border-0 shadow p-3 h-100">
-                  <h5 className="fw-bold text-dark mb-3">
-                    <FaClock className="me-2 text-warning" />
-                    Next Scheduled Test
-                  </h5>
-                  <p className="mb-2">🗓️ <strong>Speaking Test</strong></p>
-                  <p className="text-muted">📍 Date: 15th July 2025<br />⏰ Time: 3:00 PM</p>
-                  <button className="btn btn-sm btn-outline-dark mt-2">View Schedule</button>
-                </div>
-              </div>
-            </div>
-
-            {/* Tips & Announcements */}
-            <div className="row g-4">
-              <div className="col-md-6">
-                <div className="card border-0 shadow p-3 h-100 bg-light">
-                  <h5 className="fw-bold text-dark mb-3">
-                    <FaLightbulb className="me-2 text-info" />
-                    Tip of the Day
-                  </h5>
-                  <p className="text-muted small">
-                    ✨ Practice listening with different accents to improve performance.
-                  </p>
-                </div>
-              </div>
-
-              <div className="col-md-6">
-                <div className="card border-0 shadow p-3 h-100 bg-light">
-                  <h5 className="fw-bold text-dark mb-3">
-                    <FaBullhorn className="me-2 text-danger" />
-                    Announcements
-                  </h5>
-                  <ul className="small mb-0">
-                    <li>🎉 New full-length mock test added!</li>
-                    <li>🔔 Writing test evaluation upgraded</li>
-                    <li>📢 Join Speaking Webinar – July 20</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="flex">
+        {/* Sidebar */}
+        <aside
+          className={`${
+            sidebarOpen ? "w-64" : "w-26"
+          } bg-white border-r border-gray-200 min-h-screen transition-all duration-300`}
+        >
+          <div className="p-4">
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="hidden lg:flex mb-4 w-full justify-center p-2 hover:bg-gray-100 rounded-md transition-colors"
+            >
+              <MdMenu className="w-5 h-5" />
+            </button>
+            <nav className="space-y-2">
+              <Link
+                to="/user/dashboard"
+                className={`w-full flex items-center ${
+                  sidebarOpen ? "justify-start" : "justify-center"
+                } p-3 rounded-md transition-colors ${
+                  selectedModule === "overview"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+                title={!sidebarOpen ? "Overview" : ""}
+              >
+                <MdBarChart className="w-4 h-4" />
+                {sidebarOpen && <span className="ml-2">Overview</span>}
+              </Link>
+              <Link
+                to="/user/tests"
+                className={`w-full flex items-center ${
+                  sidebarOpen ? "justify-start" : "justify-center"
+                } p-3 rounded-md transition-colors ${
+                  selectedModule === "tests"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+                title={!sidebarOpen ? "Practice Tests" : ""}
+              >
+                <MdAssignment className="w-4 h-4" />
+                {sidebarOpen && <span className="ml-2">Practice Tests</span>}
+              </Link>
+              <Link
+                to="/user/progress"
+                className={`w-full flex items-center ${
+                  sidebarOpen ? "justify-start" : "justify-center"
+                } p-3 rounded-md transition-colors ${
+                  selectedModule === "progress"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+                title={!sidebarOpen ? "Progress" : ""}
+              >
+                <MdTrendingUp className="w-4 h-4" />
+                {sidebarOpen && <span className="ml-2">Progress</span>}
+              </Link>
+              <Link
+                to="/user/community"
+                className={`w-full flex items-center ${
+                  sidebarOpen ? "justify-start" : "justify-center"
+                } p-3 rounded-md transition-colors ${
+                  selectedModule === "community"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+                title={!sidebarOpen ? "Community" : ""}
+              >
+                <MdPeople className="w-4 h-4" />
+                {sidebarOpen && <span className="ml-2">Community</span>}
+              </Link>
+              <Link
+                to="/user/settings"
+                className={`w-full flex items-center ${
+                  sidebarOpen ? "justify-start" : "justify-center"
+                } p-3 rounded-md transition-colors ${
+                  selectedModule === "settings"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+                title={!sidebarOpen ? "Settings" : ""}
+              >
+                <MdSettings className="w-4 h-4" />
+                {sidebarOpen && <span className="ml-2">Settings</span>}
+              </Link>
+            </nav>
           </div>
-        </>
-      ) : (
-        // Not logged in
-        <div className="container text-center my-5">
-          <h2 className="text-danger">Access Denied</h2>
-          <p className="text-muted">Please sign in to access the dashboard.</p>
-          <button className="btn btn-primary" onClick={() => navigate("/signin")}>
-            Sign In
-          </button>
-        </div>
-      )}
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 p-6">
+          {selectedModule === "overview" && <OverviewPage />}
+          {selectedModule === "tests" && <PracticeTestsPage />}
+          {selectedModule === "progress" && <ProgressPage />}
+          {selectedModule === "community" && <CommunityPage />}
+          {selectedModule === "settings" && <SettingsPage />}
+        </main>
+      </div>
     </div>
   );
-};
-
-export default Dashboard;
+}

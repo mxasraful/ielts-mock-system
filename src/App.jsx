@@ -1,7 +1,6 @@
 // App.js
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import AuthPage from "./components/Auth/Auth";
@@ -13,9 +12,8 @@ import Testimonial from "./components/Tesimonials/Testimonials";
 import ShortFooter from "./components/Footer/ShortFooter";
 import FaqPage from "./components/FAQ/FAQ";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
-import UserProfile from "./components/Dashboard/Profile/Profile";
-import DashNav from "./components/Dashboard/DashNav/DashNav";
 import UserWrapper from "./components/UserWrapper/UserWrapper";
+import "./App.css";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -92,17 +90,21 @@ const router = createBrowserRouter([
     path: "/user",
     element: <UserWrapper />,
     children: [
-      { path: "dashboard", element: <Dashboard /> },
-      { path: "settings", element: <div>User Settings</div> },
-      {
-        path: "profile",
-        element: (
-          <div className="d-flex flex-column min-vh-100">
-            <UserProfile />
+      { path: "dashboard", element: <Dashboard />},
+      { path: "settings", element: <Dashboard />},
+      { path: "profile", element: <Dashboard /> },
+      { path: "community", element: <Dashboard />},
+      { path: "tests", element: <Dashboard /> },
+      { path: "progress", element: <Dashboard /> },
+      { path: "*", element: 
+        <div style={{display: "flex", justifyContent: "center"}}>
+          <div style={{textAlign: "center"}}>
+            <h5 className="h5 mt-5">There is no preferances in this link.</h5>
+            <br />
+            <a href="/user/dashboard" className="btn btn-success px-4">Go Back To Dashboard</a>
           </div>
-        ),
+        </div>
       },
-      { path: "settings", element: <div>User Settings</div> },
     ],
   },
 

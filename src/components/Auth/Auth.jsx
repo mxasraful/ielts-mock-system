@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { FaGoogle } from "react-icons/fa";
 import { MainContext } from "../../Context/MainContext";
+import { Button, Form, Input } from "@heroui/react";
 
 const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -18,7 +19,7 @@ const AuthPage = () => {
     name: null,
   });
   const { user, loginUser } = useContext(MainContext);
-  const nevigate = useNavigate();
+  const navigate = useNavigate();
 
   // Set the page title dynamically based on headerData
   const { headerData } = useContext(MainContext);
@@ -44,12 +45,12 @@ const AuthPage = () => {
 
   useEffect(() => {
     if (user?.email) {
-      nevigate("/user/dashboard"); // Redirect to dashboard if user is logged in
+      navigate("/user/dashboard"); // Redirect to dashboard if user is logged in
     }
   }, [user]);
 
   const toggleForm = () => {
-    nevigate(isSignUp ? "/signin" : "/signup");
+    navigate(isSignUp ? "/signin" : "/signup");
   };
 
   const handleChange = (e) => {
@@ -104,7 +105,9 @@ const AuthPage = () => {
     <div className="container">
       {user && user.email ? (
         <div className="text-center mt-5">
-          <h2 className="text-success">Welcome, {user.name || user.email}!</h2>
+          <h2 className="text-success h2">
+            Welcome, {user.name || user.email}!
+          </h2>
           <p className="text-muted">You are already logged in.</p>
         </div>
       ) : (
@@ -112,7 +115,7 @@ const AuthPage = () => {
           className="form-container bg-white p-4 rounded shadow-sm mt-5 mx-auto"
           style={{ maxWidth: "450px" }}
         >
-          <h2 className="text-center text-danger mb-4">
+          <h2 className="text-center text-danger mb-4 h2">
             {isSignUp ? "Sign Up" : "Sign In"}
           </h2>
           <form onSubmit={handleSubmit}>
@@ -168,9 +171,11 @@ const AuthPage = () => {
               className="btn btn-outline-danger me-2 w-100"
               onClick={handleGoogleSignIn}
             >
-              <FaGoogle className="mb-1 me-3" />
-              &nbsp;
-              <span>Google</span>
+              <div className="gLoginBtnIconAndInfo" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <FaGoogle className="mb-1 me-3" style={{marginTop: "4px"}} />
+                &nbsp;
+                <span>Google</span>
+              </div>
             </button>
           </div>
           <p className="mt-3 text-center">
@@ -194,7 +199,9 @@ const AuthPage = () => {
             Dashboard
           </a>
         </div>
-                  ) : ""}
+      ) : (
+        ""
+      )}
     </div>
   );
 };

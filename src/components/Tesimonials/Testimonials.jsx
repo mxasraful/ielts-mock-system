@@ -43,7 +43,7 @@ const Testimonial = () => {
       {/* Page Content */}
       <div className="testimonial-page py-5 bg-light">
         <div className="container">
-          <h2 className="text-center text-danger fw-bold mb-4">What Our Users Say</h2>
+          <h2 className="text-center text-danger fw-bold mb-4 h2">What Our Users Say</h2>
           <p className="text-center text-muted mb-5">
             Hear from students who improved their IELTS scores using {headerData?.title || "IELTS MOCK PREP Pro"}.
           </p>

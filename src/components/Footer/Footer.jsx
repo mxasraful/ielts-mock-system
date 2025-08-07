@@ -14,11 +14,11 @@ export default function Footer() {
         <div className="container">
           <div className="row mb-4">
             <div className="col-md-4">
-              <h5>{headerData?.title}</h5>
+              <h3>{headerData?.title}</h3>
               <p>Your ultimate companion for IELTS exam preparation.</p>
             </div>
             <div className="col-md-4">
-              <h5>Quick Links</h5>
+              <h3>Quick Links</h3>
               <ul className="list-unstyled">
                 <li>
                   <Link to="/testimonials">Testimonials</Link>
@@ -32,7 +32,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-md-4">
-              <h5>Contact Us</h5>
+              <h3>Contact Us</h3>
               <p>Email: {contactInfo?.email || "mxasraful@outlook.com"} </p>
               <p>Phone: {contactInfo?.phone || ""} </p>
             </div>
